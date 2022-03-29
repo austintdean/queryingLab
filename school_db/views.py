@@ -58,12 +58,18 @@ SELECT `school_db_student`.`id`,
 # Order the data by highest GPAs first (descending).
 # Print out each student's full name and gpa to the terminal
 def problem_one(request):
+   
+   
 
+    student_gpa = Student.objects.filter(gpa__gt=3).order_by('-gpa')
+   
+    for student in student_gpa:
+      print(f"Full Name:{student.first_name} {student.last_name} GPA: {student.gpa}")
 
 
     return complete(request)
 
-
+1
 # Supporting Query Method Documentation:
 """
 https://docs.djangoproject.com/en/4.0/ref/models/querysets/#filter
@@ -71,7 +77,7 @@ https://docs.djangoproject.com/en/4.0/ref/models/querysets/#order-by
 """
 
 # Expected Terminal Response:
-"""
+""" 
 Full Name: Julian Bashir GPA: 4.4
 Full Name: Keiko Ishikawa GPA: 4.2
 Full Name: Jake Sisko GPA: 4.0
